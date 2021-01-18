@@ -1,0 +1,55 @@
+﻿@using WAFC.Reports.Models
+@model LoginViewModel
+@{
+    ViewBag.PageTitle = "Login Page";
+    ViewBag.Description = "login page";
+    Layout = "~/Views/Shared/_Empty.cshtml";
+}
+
+<div class="login-container animated fadeIn">
+    <div class="loginbox bg-white">
+        <div class="loginbox-title">SIGN IN</div>
+        <div class="or"></div>
+        @using (var form = Html.Bootstrap().Begin(new Form().Type(FormType.Vertical)))
+        {
+            <div class="loginbox-textbox">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="loginbox-textbox">
+                @Html.Bootstrap().TextBoxFor(t => t.Email).Placeholder("Username")
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="loginbox-textbox">
+                @Html.Bootstrap().PasswordFor(t => t.Password).Placeholder("Password")
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+            {
+                List<SelectListItem> domains = new List<SelectListItem>();
+                domains.Add(new SelectListItem
+                {
+                    Text = "ICRAF",
+                    Value = "ICRAF", Selected=true
+                });
+                domains.Add(new SelectListItem
+                {
+                    Text = "CGIAR",
+                    Value = "CGIAR",
+                    Selected = true
+                });
+
+
+                <div class="loginbox-textbox">
+                    @Html.DropDownListFor(a => a.Domain, domains, new { @class = "form-control", id = "Domain", required = "required", title = "Please select a domain" })
+                    @Html.ValidationMessageFor(m => m.Domain, "", new { @class = "text-danger" })
+                </div>
+            }
+            <div class="loginbox-submit">
+                @Html.Bootstrap().SubmitButton().Text("Login").Color(BootstrapColors.Primary).ButtonBlock()
+            </div>
+
+        }
+    </div>
+    <div class="logobox">
+    </div>
+</div>

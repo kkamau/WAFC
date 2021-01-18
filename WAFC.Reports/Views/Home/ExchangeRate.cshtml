@@ -1,0 +1,134 @@
+﻿@model WAFC.Reports.Models.ExchangeRatesViewModel
+@{
+    ViewBag.PageTitle = "Exchange Rates by Dates";
+    //ViewBag.Description = " Detailed report by transaction dates";
+    Layout = "~/Views/Shared/_Default.cshtml";
+}
+<div class="row">
+
+    <div class="widget-body">
+
+        <div class="horizontal-space"></div>
+        <div>
+            <div class="widget">
+                <div class="widget-header ">
+                    <span class="widget-caption">@ViewBag.PageTitle</span>
+                    <div class="widget-buttons">
+                        <a href="#" data-toggle="maximize">
+                            <i class="fa fa-expand"></i>
+                        </a>
+                        <a href="#" data-toggle="collapse">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a href="#" data-toggle="dispose">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="horizontal-space"></div>
+
+            </div>
+        </div>
+
+        <div class="horizontal-space">
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <div class="pagination">
+                    @using (Html.Bootstrap().Begin(new Form().Type(FormType.Inline).FormMethod(FormMethod.Post)))
+                    {
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(a => a.CurrencyId, Model.Currency, "--Select Currency--", new { @class = "form-control", id = "CurrencyId", required = "required", title = "Select Currency" })
+                        @Html.ValidationMessageFor(model => model.Currency, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.Sdate, htmlAttributes: new { @class = "font-weight-bolder padding-10" })
+                        @Html.TextBoxFor(m => m.Sdate, htmlAttributes: new { type = "date", id = "Sdate", value=DateTime.Now.Date.AddMonths(-1).ToString("dd/MM/yyyy"), required = "required", @class = "form-control date-picker" })
+                        @Html.LabelFor(model => model.Edate, htmlAttributes: new { @class = "font-weight-bolder padding-10" })
+                        @Html.TextBoxFor(m => m.Edate, htmlAttributes: new { type = "date", id = "Edate", value= DateTime.Now.Date.ToString("dd/MM/yyyy"), required = "required", @class = "form-control date-picker" })
+                        <div class="form-group">
+                            @Html.Bootstrap().SubmitButton().Text("Filter").Color(BootstrapColors.Azure).HtmlAttributes(new { @class = "" })
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+         @if (Model.Sdate != null)
+        {
+            <div class="horizontal-space"></div>
+            <div class="flip-scroll">
+                <hr class="wide" />
+                <div class="btn-group">
+                    <a class="btn btn-blue" href="javascript:void(0);">Export</a>
+                    <a class="btn btn-blue  dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-menu dropdown-blue">
+                        <li>
+                            <a href="#" onclick="return exportToExcel('TableGrants');">Grants</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <hr class="wide" />
+
+
+
+                <div class="tabbable">
+
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane in active">
+                            <table class="table table-hover table-striped table-bordered" id="TableGrants">
+
+                                <thead class="flip-content bordered-palegreen">
+                                    <tr>
+                                        <th>
+                                            Currency
+                                        </th>
+                                        <th>
+                                            Currency
+                                        </th>
+                                        <th>
+                                            Date from
+                                        </th>
+                                        <th>
+                                            Date to
+                                        </th>
+                                        <th class='text-right'>
+                                            Rate
+                                        </th>
+                                        <th class='text-right'>
+                                            Rate (Inverse)
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @Html.Raw(HttpUtility.HtmlDecode(ViewBag.tdstr))
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        }
+        </div>
+    </div>
+
+
+<!--Jquery Select2-->
+    <script src="~/assets/js/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function exportToExcel(tablename) {
+            $("#" + tablename).table2excel({
+                name: "Table2Excel",
+                filename: tablename,
+                fileext: ".xls"
+            });
+        }
+    </script>

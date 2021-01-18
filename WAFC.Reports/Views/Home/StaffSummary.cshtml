@@ -1,0 +1,135 @@
+﻿@model WAFC.Reports.Models.StaffCostsDetailsViewModel
+@{
+    /**/
+
+    ViewBag.PageTitle = "Account Class";
+    ViewBag.Description = "Natural Class";
+    Layout = "~/Views/Shared/_Default.cshtml";
+}
+<div class="row">
+
+</div>
+<div class="row">
+    <div>
+        <div class="widget">
+            <div class="widget-header ">
+                <span class="widget-caption"><strong>Staff Statement by Expense Type</strong></span>
+                <div class="widget-buttons">
+                    <a href="#" data-toggle="maximize">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a href="#" data-toggle="collapse">
+                        <i class="fa fa-minus"></i>
+                    </a>
+                    <a href="#" data-toggle="dispose">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="widget-body">
+                <div id="bar-chart" class="chart chart-lg"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="well with-header with-footer">
+            <div class="header bordered-green">
+                <strong>Aged Analysis</strong>
+            </div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Period
+                        </th>
+                        <th class='text-right'>
+                            Amount
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.Raw(HttpUtility.HtmlDecode(ViewBag.trtemp))
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="flip-scroll">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="flip-content bordered-palegreen">
+                    <tr>
+                        <th>
+                            Expense Type
+                        </th>
+                        <th class='text-right'>
+                            Amount
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.Raw(HttpUtility.HtmlDecode(ViewBag.tdstr))   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--Jquery Select2-->
+<script src="../assets/js/select2/select2.js"></script>
+<script src="../assets/js/charts/morris/raphael-2.0.2.min.js"></script>
+<script src="../assets/js/charts/morris/morris.js"></script>
+<script src="../assets/js/charts/morris/morris-init.js"></script>
+<!--Bootstrap Tags Input-->
+<!--Bootstrap Date Picker-->
+<script src="../assets/js/datetime/bootstrap-datepicker.js"></script>
+
+
+@section PageScripts{
+    <script>
+
+
+        //--Bootstrap Date Picker--
+        $('.date-picker').datepicker();
+
+ var InitiateBarChart = function () {
+            return {
+                init: function () {
+                    Morris.Bar({
+                        element: 'bar-chart',
+                        data: [@Html.Raw(HttpUtility.HtmlDecode(ViewBag.jscript))],
+                        xkey: 'y',
+                        ykeys: ['a'],
+                        labels: ['Amount'],
+                        hideHover: 'true',
+                        resize: 'true',
+                        barColors: [themefourthcolor]
+                    });
+                }
+            };
+        }();
+        $(window).bind("load", function () {
+
+            /*Sets Themed Colors Based on Themes*/
+            themeprimary = getThemeColorFromCss('themeprimary');
+            themesecondary = getThemeColorFromCss('themesecondary');
+            themethirdcolor = getThemeColorFromCss('themethirdcolor');
+            themefourthcolor = getThemeColorFromCss('themefourthcolor');
+            themefifthcolor = getThemeColorFromCss('themefifthcolor');
+
+            InitiateBarChart.init();
+
+        });
+
+
+    </script>
+    }

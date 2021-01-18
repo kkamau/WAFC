@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://services.agresso.com/QueryEngineService/QueryEngineV201101" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://services.agresso.com/QueryEngineService/QueryEngineV201101" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>Enables access to the Agresso QueryEngine through a web service interface</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.agresso.com/QueryEngineService/QueryEngineV201101">
+      <s:element name="GetTemplateProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="templateId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSCredentials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTemplatePropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTemplatePropertiesResult" type="tns:TemplateProperties" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TemplateProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AggregateId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExtraTables" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExtraWhere" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Frame" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Table1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Table2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Table3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VersionMinor" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Aggregated" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AutoFind" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsBrowseTable" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UseTable1" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UseTable2" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UseTable3" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DWPeriod" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartLevel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxRows" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="TemplateId" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTemplateResultAsDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="tns:InputForTemplateResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InputForTemplateResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TemplateId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemplateResultOptions" type="tns:TemplateResultOptions" />
+          <s:element minOccurs="0" maxOccurs="1" name="SearchCriteriaPropertiesList" type="tns:ArrayOfSearchCriteriaProperties" />
+          <s:element minOccurs="0" maxOccurs="1" name="PipelineAssociatedName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TemplateResultOptions">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ShowDescriptions" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Aggregated" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="OverrideAggregation" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CalculateFormulas" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FormatAlternativeBreakColumns" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RemoveHiddenColumns" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Filter" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstRecord" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastRecord" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSearchCriteriaProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SearchCriteriaProperties" nillable="true" type="tns:SearchCriteriaProperties" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SearchCriteriaProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RestrictionType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToValue" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataLength" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataCase" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsParameter" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsVisible" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPrompt" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMandatory" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanBeOverridden" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="RelDateCrit" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTemplateResultAsDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTemplateResultAsDataSetResult" type="tns:TemplateResultAsDataSet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TemplateResultAsDataSet">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemplateResult">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTemplateResultOptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTemplateResultOptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTemplateResultOptionsResult" type="tns:TemplateResultOptions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTemplateResultAsXML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="tns:InputForTemplateResult" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTemplateResultAsXMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTemplateResultAsXMLResult" type="tns:TemplateResultAsXML" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TemplateResultAsXML">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemplateResult" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSearchCriteria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="templateId" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="hideUnused" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchCriteriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSearchCriteriaResult" type="tns:SearchCriteria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SearchCriteria">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SearchCriteriaPropertiesList" type="tns:ArrayOfSearchCriteriaProperties" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetExpression">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="templateId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExpressionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExpressionResult" type="tns:Expression" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Expression">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpressionPropertiesList" type="tns:ArrayOfExpressionProperties" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfExpressionProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExpressionProperties" nillable="true" type="tns:ExpressionProperties" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExpressionProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Formula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRunningTotal" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasSum" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasVerticalSum" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStatisticalFormula">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="templateId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatisticalFormulaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStatisticalFormulaResult" type="tns:StatisticalFormula" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StatisticalFormula">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatisticalFormulaPropertiesList" type="tns:ArrayOfStatisticalFormulaProperties" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfStatisticalFormulaProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StatisticalFormulaProperties" nillable="true" type="tns:StatisticalFormulaProperties" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StatisticalFormulaProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Formula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExcludeZero" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayMethod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayColumn" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFormatInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="templateId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFormatInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFormatInfoResult" type="tns:FormatInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FormatInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FormatPropertiesList" type="tns:ArrayOfFormatProperties" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormatProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FormatProperties" nillable="true" type="tns:FormatProperties" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FormatProperties">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AmountDisplayFormat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AttributeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BreakColName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BreakText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnHeaderText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConditionType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FontFamily" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Formula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectionType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectionFormatID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Break" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConditionInUse" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConditionOnlyBreaks" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FontBold" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FontItalic" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FontStrikeOut" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FontUnderline" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Show" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShowText" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConditionLevel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataCase" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataLength" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DisplayLength" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DisplayOrder" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SortOrder" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextDisplayLength" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SequenceNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConditionFrom" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConditionTo" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTemplateList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="formList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descrList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTemplateListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTemplateListResult" type="tns:TemplateList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TemplateList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TemplateHeaderList" type="tns:ArrayOfTemplateHeader" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTemplateHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TemplateHeader" nillable="true" type="tns:TemplateHeader" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TemplateHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TemplateId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Frame" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FunctionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Module" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTemplateMetaData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="templateId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="credentials" type="tns:WSCredentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTemplateMetaDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTemplateMetaDataResult" type="tns:TemplateMetaData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TemplateMetaData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SearchCriteria" type="tns:SearchCriteria" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemplateProperties" type="tns:TemplateProperties" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormatInfo" type="tns:FormatInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Expression" type="tns:Expression" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatisticalFormula" type="tns:StatisticalFormula" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="About">
+        <s:complexType />
+      </s:element>
+      <s:element name="AboutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AboutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTemplatePropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTemplateProperties" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplatePropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTemplatePropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplateResultAsDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTemplateResultAsDataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplateResultAsDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTemplateResultAsDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplateResultOptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTemplateResultOptions" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplateResultOptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTemplateResultOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplateResultAsXMLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTemplateResultAsXML" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplateResultAsXMLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTemplateResultAsXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCriteriaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSearchCriteria" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchCriteriaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSearchCriteriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExpressionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExpression" />
+  </wsdl:message>
+  <wsdl:message name="GetExpressionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExpressionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatisticalFormulaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatisticalFormula" />
+  </wsdl:message>
+  <wsdl:message name="GetStatisticalFormulaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatisticalFormulaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFormatInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFormatInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetFormatInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFormatInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplateListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTemplateList" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplateListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTemplateListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplateMetaDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTemplateMetaData" />
+  </wsdl:message>
+  <wsdl:message name="GetTemplateMetaDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTemplateMetaDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AboutSoapIn">
+    <wsdl:part name="parameters" element="tns:About" />
+  </wsdl:message>
+  <wsdl:message name="AboutSoapOut">
+    <wsdl:part name="parameters" element="tns:AboutResponse" />
+  </wsdl:message>
+  <wsdl:portType name="QueryEngineV201101Soap">
+    <wsdl:operation name="GetTemplateProperties">
+      <wsdl:documentation>Returns the properties associated with BRT</wsdl:documentation>
+      <wsdl:input message="tns:GetTemplatePropertiesSoapIn" />
+      <wsdl:output message="tns:GetTemplatePropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplateResultAsDataSet">
+      <wsdl:documentation>Returns the template result as a MS DataSet</wsdl:documentation>
+      <wsdl:input message="tns:GetTemplateResultAsDataSetSoapIn" />
+      <wsdl:output message="tns:GetTemplateResultAsDataSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplateResultOptions">
+      <wsdl:documentation>Returns the options with default values, that are used to specify what output is wanted from GetTemplateResultAsDataSet</wsdl:documentation>
+      <wsdl:input message="tns:GetTemplateResultOptionsSoapIn" />
+      <wsdl:output message="tns:GetTemplateResultOptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplateResultAsXML">
+      <wsdl:documentation>Returns the template result as a XML string</wsdl:documentation>
+      <wsdl:input message="tns:GetTemplateResultAsXMLSoapIn" />
+      <wsdl:output message="tns:GetTemplateResultAsXMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCriteria">
+      <wsdl:documentation>Returns all the searchable columns in the BRT</wsdl:documentation>
+      <wsdl:input message="tns:GetSearchCriteriaSoapIn" />
+      <wsdl:output message="tns:GetSearchCriteriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExpression">
+      <wsdl:documentation>Returns all expressions in the BRT</wsdl:documentation>
+      <wsdl:input message="tns:GetExpressionSoapIn" />
+      <wsdl:output message="tns:GetExpressionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatisticalFormula">
+      <wsdl:documentation>Returns all statistical formulas in the BRT</wsdl:documentation>
+      <wsdl:input message="tns:GetStatisticalFormulaSoapIn" />
+      <wsdl:output message="tns:GetStatisticalFormulaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormatInfo">
+      <wsdl:documentation>Returns formatting information for a BRT as defined in the BRT definition</wsdl:documentation>
+      <wsdl:input message="tns:GetFormatInfoSoapIn" />
+      <wsdl:output message="tns:GetFormatInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplateList">
+      <wsdl:documentation>Returns all the available BRT's for the current user.</wsdl:documentation>
+      <wsdl:input message="tns:GetTemplateListSoapIn" />
+      <wsdl:output message="tns:GetTemplateListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplateMetaData">
+      <wsdl:documentation>GetTemplateMetaData is a helper function that gets SearchCriteria, TemplatePropertiesand FormatInfo in one go, returned as a TemplateMetaData object. GetTemplateMetaData is very performance boosting, as QE WS only needs to be called one time to get all the values.</wsdl:documentation>
+      <wsdl:input message="tns:GetTemplateMetaDataSoapIn" />
+      <wsdl:output message="tns:GetTemplateMetaDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="About">
+      <wsdl:documentation>Diagnostics method that checks for presence of nessecary components and database connection</wsdl:documentation>
+      <wsdl:input message="tns:AboutSoapIn" />
+      <wsdl:output message="tns:AboutSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="QueryEngineV201101Soap" type="tns:QueryEngineV201101Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTemplateProperties">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/GetTemplateProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplateResultAsDataSet">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/GetTemplateResultAsDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplateResultOptions">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/GetTemplateResultOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplateResultAsXML">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/GetTemplateResultAsXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchCriteria">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/GetSearchCriteria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExpression">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/GetExpression" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatisticalFormula">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/GetStatisticalFormula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormatInfo">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/GetFormatInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplateList">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/GetTemplateList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplateMetaData">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/GetTemplateMetaData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="About">
+      <soap:operation soapAction="http://services.agresso.com/QueryEngineService/QueryEngineV201101/About" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="QueryEngineV201101">
+    <wsdl:documentation>Enables access to the Agresso QueryEngine through a web service interface</wsdl:documentation>
+    <wsdl:port name="QueryEngineV201101Soap" binding="tns:QueryEngineV201101Soap">
+      <soap:address location="https://icraf.ocs.cgiar.org/Agressowshost/service.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

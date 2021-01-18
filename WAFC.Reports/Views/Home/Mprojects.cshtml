@@ -1,0 +1,171 @@
+﻿
+@{
+    //ViewBag.PageTitle = " Detailed report by transaction dates";
+    //ViewBag.Description = " Detailed report by transaction dates";
+    Layout = "~/Views/Shared/_Default.cshtml";
+}
+<div class="row">
+
+    <div class="widget-body">
+
+
+
+
+        <div class="horizontal-space"></div>
+        <div>
+            <div class="widget">
+                <div class="widget-header ">
+                    <span class="widget-caption">@ViewBag.PageTitle</span>
+                    <div class="widget-buttons">
+                        <a href="#" data-toggle="maximize">
+                            <i class="fa fa-expand"></i>
+                        </a>
+                        <a href="#" data-toggle="collapse">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a href="#" data-toggle="dispose">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="horizontal-space"></div>
+
+            </div>
+        </div>
+
+        <div class="horizontal-space"></div>
+
+        <div class="flip-scroll">
+            <hr class="wide" />
+            <div class="btn-group">
+                <a class="btn btn-blue" href="javascript:void(0);">Export</a>
+                <a class="btn btn-blue  dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu dropdown-blue">
+                    <li>
+                        <a href="#" onclick="return exportToExcel('TableGrants');">Grants</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return exportToExcel('TableCrp');">CRP</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="wide" />
+
+
+
+            <div class="tabbable">
+                <ul class="nav nav-tabs" id="myTab">
+                    <li class="active">
+                        <a data-toggle="tab" href="#home">
+                            Grant Agreements
+                        </a>
+                    </li>
+
+                    <li class="tab-red">
+                        <a data-toggle="tab" href="#profile">
+                            CRP Output/Units
+                        </a>
+                    </li>
+
+
+                </ul>
+
+                <div class="tab-content">
+                    <div id="home" class="tab-pane in active">
+                        <table class="table table-hover table-striped table-bordered" id="TableGrants">
+                            <thead class="flip-content bordered-palegreen">
+                                <tr>
+                                    <th>
+                                        Output\Task
+                                    </th>
+                                    <th>Budget (A)</th>
+                                    <th>
+                                        Actuals (B)
+                                    </th>
+                                    <th>
+                                        Commitments (C)
+                                    </th>
+                                    <th>
+                                        Total Expenditure (D=B+C)
+                                    </th>
+                                    <th>
+                                        Available (A-D)
+                                    </th>
+                                    <th>
+                                        % Utilized
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @Html.Raw(HttpUtility.HtmlDecode(ViewBag.tdstr))   
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!--Jquery Select2-->
+<script src="../assets/js/select2/select2.js"></script>
+<script src="../assets/js/charts/morris/raphael-2.0.2.min.js"></script>
+<script src="../assets/js/charts/morris/morris.js"></script>
+<script src="../assets/js/charts/morris/morris-init.js"></script>
+<!--Bootstrap Tags Input-->
+<!--Bootstrap Date Picker-->
+<script src="../assets/js/datetime/bootstrap-datepicker.js"></script>
+
+
+@section PageScripts{
+    <script>
+
+
+        //--Bootstrap Date Picker--
+        $('.date-picker').datepicker();
+
+        $(window).bind("load", function () {
+
+            /*Sets Themed Colors Based on Themes*/
+            themeprimary = getThemeColorFromCss('themeprimary');
+            themesecondary = getThemeColorFromCss('themesecondary');
+            themethirdcolor = getThemeColorFromCss('themethirdcolor');
+            themefourthcolor = getThemeColorFromCss('themefourthcolor');
+            themefifthcolor = getThemeColorFromCss('themefifthcolor');
+
+            InitiateBarChart.init();
+
+        });
+        var InitiateBarChart = function () {
+            return {
+                init: function () {
+                    Morris.Bar({
+                        element: 'bar-chart',
+                        data: @ViewBag.jscript,
+                        xkey: 'y',
+                        ykeys: ['a'],
+                        labels: ['Amount'],
+                        hideHover: 'auto',
+                        barColors: [themefourthcolor]
+                    });
+                }
+            };
+        }();
+
+    </script>
+    <script type="text/javascript">
+        function exportToExcel(tablename) {
+            $("#" + tablename).table2excel({
+                name: "Table2Excel",
+                filename: tablename,
+                fileext: ".xls"
+            });
+        }
+    </script>
+}

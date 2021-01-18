@@ -1,0 +1,318 @@
+﻿@model WAFC.Reports.Models.IndexReportViewModel
+@{
+    ViewBag.PageTitle = "Themes";
+    ViewBag.Description = "tooltips and notifications";
+    Layout = "~/Views/Shared/_Default.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <div class="pagination">
+            @using (Html.Bootstrap().Begin(new Form().Type(FormType.Inline).FormMethod(FormMethod.Post)))
+            {
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(a => a.Year, Model.FinYears, "--Select Year--", new { @class = "form-control", id = "Year", required = "required", title = "Select Financial Period" })
+                @Html.ValidationMessageFor(model => model.FinYears, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.Bootstrap().SubmitButton().Text("Filter").Color(BootstrapColors.Azure).HtmlAttributes(new { @class = "" })
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+
+            <div class="widget-body">
+                
+                <table>
+                    <tr>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="27" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="102" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="6" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="99" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="9" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="101" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="8" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="7" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="93" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="8" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="90" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="6" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="7" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="104" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="104" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="12" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="99" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="21" height="1" border="0" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="1" border="0" alt="" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="18">
+                            <img style="display: block" name="CRPbudget_r1_c1" src="~/assets/img/CRP-budget_r1_c1.gif" width="903" height="102" border="0" id="CRPbudget_r1_c1" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="102" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" colspan="8">
+                            <img style="display: block" name="CRPbudget_r2_c1" src="~/assets/img/CRP-budget_r2_c1.gif" width="359" height="120" border="0" id="CRPbudget_r2_c1" alt="" />
+                        </td>
+                        <td colspan="3">
+                            <a href="#">
+                                <img style="display: block" name="CRPbudget_r2_c9" src="~/assets/img/CRP-budget_r2_c9.gif" width="191" height="28" border="0" id="CRPbudget_r2_c9" alt="" />
+                            </a>
+                        </td>
+                        <td rowspan="2" colspan="7">
+                            <img style="display: block" name="CRPbudget_r2_c12" src="~/assets/img/CRP-budget_r2_c12.gif" width="353" height="120" border="0" id="CRPbudget_r2_c12" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="28" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <img style="display: block" name="CRPbudget_r3_c9" src="~/assets/img/CRP-budget_r3_c9.gif" width="191" height="92" border="0" id="CRPbudget_r3_c9" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="92" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="12">
+                            <img style="display: block" name="CRPbudget_r4_c1" src="~/assets/img/CRP-budget_r4_c1.gif" width="27" height="355" border="0" id="CRPbudget_r4_c1" alt="" />
+                        </td>
+                        <td>
+                            <a href="~/Home/CRP?crp=11">
+                                <img style="display: block" name="CRPbudget_r4_c2" src="~/assets/img/CRP-budget_r4_c2.gif" width="102" height="39" border="0" id="CRPbudget_r4_c2" alt="" />
+                            </a>
+                        </td>
+                        <td rowspan="12">
+                            <img style="display: block" name="CRPbudget_r4_c3" src="~/assets/img/CRP-budget_r4_c3.gif" width="6" height="355" border="0" id="CRPbudget_r4_c3" alt="" />
+                        </td>
+                        <td>
+                            <a href="~/Home/CRP?crp=12">
+                                <img style="display: block" name="CRPbudget_r4_c4" src="~/assets/img/CRP-budget_r4_c4.gif" width="99" height="39" border="0" id="CRPbudget_r4_c4" alt="" />
+                            </a>
+                        </td>
+                        <td rowspan="12">
+                            <img style="display: block" name="CRPbudget_r4_c5" src="~/assets/img/CRP-budget_r4_c5.gif" width="9" height="355" border="0" id="CRPbudget_r4_c5" alt="" />
+                        </td>
+                        <td>
+                            <a href="~/Home/CRP?crp=2">
+                                <img style="display: block" name="CRPbudget_r4_c6" src="~/assets/img/CRP-budget_r4_c6.gif" width="101" height="39" border="0" id="CRPbudget_r4_c6" alt="" />
+                            </a>
+                        </td>
+                        <td rowspan="12">
+                            <img style="display: block" name="CRPbudget_r4_c7" src="~/assets/img/CRP-budget_r4_c7.gif" width="8" height="355" border="0" id="CRPbudget_r4_c7" alt="" />
+                        </td>
+                        <td colspan="2">
+                            <a href="~/Home/CRP?crp=4">
+                                <img style="display: block" name="CRPbudget_r4_c8" src="~/assets/img/CRP-budget_r4_c8.gif" width="100" height="39" border="0" id="CRPbudget_r4_c8" alt="" />
+                            </a>
+                        </td>
+                        <td rowspan="12">
+                            <img style="display: block" name="CRPbudget_r4_c10" src="~/assets/img/CRP-budget_r4_c10.gif" width="8" height="355" border="0" id="CRPbudget_r4_c10" alt="" />
+                        </td>
+                        <td colspan="2">
+                            <a href="~/Home/CRP?crp=5">
+                                <img style="display: block" name="CRPbudget_r4_c11" src="~/assets/img/CRP-budget_r4_c11.gif" width="96" height="39" border="0" id="CRPbudget_r4_c11" alt="" />
+                            </a>
+                        </td>
+                        <td rowspan="12">
+                            <img style="display: block" name="CRPbudget_r4_c13" src="~/assets/img/CRP-budget_r4_c13.gif" width="7" height="355" border="0" id="CRPbudget_r4_c13" alt="" />
+                        </td>
+                        <td>
+                            <a href="~/Home/CRP?crp=6">
+                                <img style="display: block" name="CRPbudget_r4_c14" src="~/assets/img/CRP-budget_r4_c14.gif" width="104" height="39" border="0" id="CRPbudget_r4_c14" alt="" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="~/Home/CRP?crp=7">
+                                <img style="display: block" name="CRPbudget_r4_c15" src="~/assets/img/CRP-budget_r4_c15.gif" width="104" height="39" border="0" id="CRPbudget_r4_c15" alt="" />
+                            </a>
+                        </td>
+                        <td rowspan="12">
+                            <img style="display: block" name="CRPbudget_r4_c16" src="~/assets/img/CRP-budget_r4_c16.gif" width="12" height="355" border="0" id="CRPbudget_r4_c16" alt="" />
+                        </td>
+                        <td>
+                            <a href="~/Home/CRP?crp=8">
+                                <img style="display: block" name="CRPbudget_r4_c17" src="~/assets/img/CRP-budget_r4_c17.gif" width="99" height="39" border="0" id="CRPbudget_r4_c17" alt="" />
+                            </a>
+                        </td>
+                        <td rowspan="12">
+                            <img style="display: block" name="CRPbudget_r4_c18" src="~/assets/img/CRP-budget_r4_c18.gif" width="21" height="355" border="0" id="CRPbudget_r4_c18" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="39" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="11">
+                            <img style="display: block" name="CRPbudget_r5_c2" src="~/assets/img/CRP-budget_r5_c2.gif" width="102" height="316" border="0" id="CRPbudget_r5_c2" alt="" />
+                        </td>
+                        <td rowspan="11">
+                            <img style="display: block" name="CRPbudget_r5_c4" src="~/assets/img/CRP-budget_r5_c4.gif" width="99" height="316" border="0" id="CRPbudget_r5_c4" alt="" />
+                        </td>
+                        <td rowspan="11">
+                            <img style="display: block" name="CRPbudget_r5_c6" src="~/assets/img/CRP-budget_r5_c6.gif" width="101" height="316" border="0" id="CRPbudget_r5_c6" alt="" />
+                        </td>
+                        <td rowspan="11" colspan="2">
+                            <img style="display: block" name="CRPbudget_r5_c8" src="~/assets/img/CRP-budget_r5_c8.gif" width="100" height="316" border="0" id="CRPbudget_r5_c8" alt="" />
+                        </td>
+                        <td rowspan="11" colspan="2">
+                            <img style="display: block" name="CRPbudget_r5_c11" src="~/assets/img/CRP-budget_r5_c11.gif" width="96" height="316" border="0" id="CRPbudget_r5_c11" alt="" />
+                        </td>
+                        <td colspan="2">
+                            <img style="display: block" name="CRPbudget_r5_c14" src="~/assets/img/CRP-budget_r5_c14.gif" width="208" height="20" border="0" id="CRPbudget_r5_c14" alt="" />
+                        </td>
+                        <td rowspan="11">
+                            <img style="display: block" name="CRPbudget_r5_c17" src="~/assets/img/CRP-budget_r5_c17.gif" width="99" height="316" border="0" id="CRPbudget_r5_c17" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="20" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="~/Home/CRP?crp=61">
+                                <img style="display: block" name="CRPbudget_r6_c14" src="~/assets/img/CRP-budget_r6_c14.gif" width="104" height="20" border="0" id="CRPbudget_r6_c14" alt="" />
+                            </a>
+                        </td>
+                        <td rowspan="10">
+                            <img style="display: block" name="CRPbudget_r6_c15" src="~/assets/img/CRP-budget_r6_c15.gif" width="104" height="296" border="0" id="CRPbudget_r6_c15" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="20" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="display: block" name="CRPbudget_r7_c14" src="~/assets/img/CRP-budget_r7_c14.gif" width="104" height="14" border="0" id="CRPbudget_r7_c14" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="14" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="~/Home/CRP?crp=62">
+                                <img style="display: block" name="CRPbudget_r8_c14" src="~/assets/img/CRP-budget_r8_c14.gif" width="104" height="25" border="0" id="CRPbudget_r8_c14" alt="" />
+                            </a>
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="25" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="display: block" name="CRPbudget_r9_c14" src="~/assets/img/CRP-budget_r9_c14.gif" width="104" height="16" border="0" id="CRPbudget_r9_c14" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="16" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="~/Home/CRP?crp=63">
+                                <img style="display: block" name="CRPbudget_r10_c14" src="~/assets/img/CRP-budget_r10_c14.gif" width="104" height="26" border="0" id="CRPbudget_r10_c14" alt="" />
+                            </a>
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="26" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="display: block" name="CRPbudget_r11_c14" src="~/assets/img/CRP-budget_r11_c14.gif" width="104" height="11" border="0" id="CRPbudget_r11_c14" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="11" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="~/Home/CRP?crp=64">
+                                <img style="display: block" name="CRPbudget_r12_c14" src="~/assets/img/CRP-budget_r12_c14.gif" width="104" height="29" border="0" id="CRPbudget_r12_c14" alt="" />
+                            </a>
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="29" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="display: block" name="CRPbudget_r13_c14" src="~/assets/img/CRP-budget_r13_c14.gif" width="104" height="10" border="0" id="CRPbudget_r13_c14" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="10" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="~/Home/CRP?crp=65">
+                                <img style="display: block" name="CRPbudget_r14_c14" src="~/assets/img/CRP-budget_r14_c14.gif" width="104" height="29" border="0" id="CRPbudget_r14_c14" alt="" />
+                            </a>
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="29" border="0" alt="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="display: block" name="CRPbudget_r15_c14" src="~/assets/img/CRP-budget_r15_c14.gif" width="104" height="116" border="0" id="CRPbudget_r15_c14" alt="" />
+                        </td>
+                        <td>
+                            <img style="display: block" src="~/assets/img/spacer.gif" width="1" height="116" border="0" alt="" />
+                        </td>
+                    </tr>
+                </table>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

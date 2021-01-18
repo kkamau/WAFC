@@ -1,0 +1,159 @@
+﻿@model WAFC.Reports.Models.DetailsViewModel
+@{
+    ViewBag.PageTitle = "Transactions";
+    ViewBag.Description = "Details";
+    Layout = "~/Views/Shared/_Default.cshtml";
+}
+
+<div class="row">
+
+    <div class="widget-body">
+
+
+        <div class="horizontal-space"></div>
+        <div>
+            <div class="widget">
+                <div class="widget-header ">
+                    <span class="widget-caption">@ViewBag.PageTitle</span>
+                    <div class="widget-buttons">
+                        <a href="#" data-toggle="maximize">
+                            <i class="fa fa-expand"></i>
+                        </a>
+                        <a href="#" data-toggle="collapse">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a href="#" data-toggle="dispose">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="horizontal-space"></div>
+
+            </div>
+        </div>
+
+        <div class="horizontal-space"></div>
+        <div class="flip-scroll">
+            <hr class="wide" />
+            <div class="btn-group">
+                <a class="btn btn-blue" href="javascript:void(0);">Export</a>
+                <a class="btn btn-blue  dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu dropdown-blue">
+                    <li>
+                        <a href="#" onclick="return exportToExcel('TableGrants');">Budget</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return exportToExcel('TableCrp');">General Ledger</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="return exportToExcel('TableComm');">Committments</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="wide" />
+
+
+            <div class="flip-scroll">
+                <h2><small><strong> Budget Transaction Details</strong></small></h2>
+
+
+
+                <table class="table table-bordered table-striped table-condensed flip-content" id="TableGrants">
+
+                    <thead class="flip-content bordered-palegreen">
+                        <tr>
+                            <th>
+                                Reference
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Budget
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @Html.Raw(HttpUtility.HtmlDecode(ViewBag.tdstr))
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flip-scroll">
+                <h2><small><strong> General Ledger Transaction Details</strong></small></h2>
+
+
+                <table class="table table-bordered table-striped table-condensed flip-content" id="TableCrp">
+
+                    <thead class="flip-content bordered-palegreen">
+                        <tr>
+                            <th>
+                                Reference
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Actuals
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @Html.Raw(HttpUtility.HtmlDecode(ViewBag.bstr))
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <div class="flip-scroll">
+                <h2><small><strong> Commitment Transaction Details</strong></small></h2>
+
+
+                <table class="table table-bordered table-striped table-condensed flip-content" id="TableComm">
+
+                    <thead class="flip-content bordered-palegreen">
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                TA/TEC/Requisition Number/PO Number
+                            </th>
+                            <th>
+                                Commitment
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @Html.Raw(HttpUtility.HtmlDecode(ViewBag.cstr))
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <div class="horizontal-space"></div>
+
+
+        </div>
+    </div>
+</div>
+ 
+
+
+@section PageScripts{
+  
+    <script type="text/javascript">
+        function exportToExcel(tablename) {
+            $("#" + tablename).table2excel({
+                name: "Table2Excel",
+                filename: tablename,
+                fileext: ".xls"
+            });
+        }
+    </script>
+}
